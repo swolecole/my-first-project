@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Angular Todo List App</h1>
+    <hr>
+    <form class="todo-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="row">
+        <div class="input-field col s9">
+          <input type="text" name="title" id="title" ngModel>
+          <label for="title">Enter Task</label>
+        </div>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"input-field col s3"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn waves-effect waves-light blue"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"material-icons inline-icon"</span>&gt;</span>add<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>Add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  </form>
+  
+  <ul class="todo-list" *ngFor="let todo of todos">
+  <li *ngIf="!this.todo.isComplete">
+  <div>
+  <div>{{this.todo.title}}</div>
+  <div>
+  <button (click)="onComplete(this.todo.id)" class="btn-floating waves-effect waves-light green"><i class="material-icons">check</i></button>
+  
+  
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"onDelete(this.todo.id)"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn-floating waves-effect waves-light red"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"material-icons"</span>&gt;</span>delete<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  
+  </ul>
+  
+  
+  <div *ngIf="!todos?.length" class="msg">
+  Your Todo List is Empty!
+  </div>
+  
+  
+  <hr>
+  <br>
+  
+  
+  <h1 id="completed-tasks">Completed Tasks</h1>
+  <hr>
+  <ul class="todo-list" *ngFor="let todo of todos">
+  <li *ngIf="this.todo.isComplete">
+  <div>
+  <div>{{this.todo.title}}</div>
+  <div>
+  <button (click)="onDelete(this.todo.id)" class="btn-floating waves-effect waves-light red"><i class="material-icons">delete</i></button>
+  </div>
+  </div>
+  </li>
+  </ul>
+  </div>
